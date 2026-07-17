@@ -52,6 +52,7 @@ from map import ParkingMap
 from reservation import ReservationTable
 from astar import CooperativeAStar
 from parking_manager import ParkingManager
+from sim_clock import PygameWallClock
 
 
 RUN_SECONDS = 40.0     # 모드별 시뮬레이션 실행 시간(실제 wall-clock 초)
@@ -68,6 +69,7 @@ def run_simulation(mode, run_seconds=RUN_SECONDS):
         parking_map,
         astar,
         reservation,
+        PygameWallClock(),
         mode=mode,
         max_cars=10**9,
     )
