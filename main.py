@@ -13,6 +13,7 @@ from reservation import ReservationTable
 from astar import CooperativeAStar
 
 from parking_manager import ParkingManager
+from sim_clock import PygameWallClock
 
 
 
@@ -302,6 +303,8 @@ def main():
             astar,
 
             reservation,
+
+            PygameWallClock(),
 
             mode=mode
 

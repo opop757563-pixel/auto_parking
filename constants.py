@@ -43,7 +43,7 @@ CAR_COLOR = (60,130,255)
 
 FPS = 5
 
-MAX_CAR = 50
+MAX_CAR = 30
 
 SPAWN_INTERVAL = 1000
 
@@ -66,3 +66,34 @@ RETRY_COOLDOWN = 300
 # 입차 대기열을 몇 ms 단위로 모아서 한번에(batch) 배정할지
 # (동시에 여러 대가 들어오는 상황을 재현 -> Hungarian이 진가를 발휘하는 지점)
 BATCH_WINDOW = 400
+
+# 같은 배치(batch)에서 여러 대가 동시에 배정될 때, 입구(ENTRY)에서
+# 차량이 실제로 출발하기 시작하는 시점을 서로 몇 tick씩 벌려줄지.
+# (0이면 같은 tick에 여러 대가 ENTRY에 동시에 나타나 겹쳐 보이는 문제 발생)
+ENTRY_STAGGER_TICKS = 3
+
+# --------------------------------------
+# 차종 설정
+# --------------------------------------
+
+# 차종 종류 (유니티 쪽 프리팹 이름과 매칭되는 식별 문자열)
+VEHICLE_TYPE_SEDAN = "SEDAN"   # 승용차
+VEHICLE_TYPE_SUV = "SUV"       # SUV
+VEHICLE_TYPE_RV = "RV"         # RV
+VEHICLE_TYPE_EV = "EV"         # 전기차
+
+VEHICLE_TYPES = [
+    VEHICLE_TYPE_SEDAN,
+    VEHICLE_TYPE_SUV,
+    VEHICLE_TYPE_RV,
+    VEHICLE_TYPE_EV,
+]
+
+# 차종별 배정 가중치 (실제 국내 등록 비율에 대략 맞춤 - 숫자만 바꾸면 비율 조정 가능)
+# 반드시 VEHICLE_TYPES와 같은 순서/개수여야 한다.
+VEHICLE_TYPE_WEIGHTS = [
+    45,  # SEDAN
+    30,  # SUV
+    15,  # RV
+    10,  # EV
+]
